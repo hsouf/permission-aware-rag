@@ -1,0 +1,15 @@
+{
+  "_comment": "Stand-in for the identity provider's directory (Okta, Entra ID, Google Workspace). Fictional people.",
+  "clearance_by_group": {
+    "all-staff": "confidential",
+    "hr-comp": "restricted",
+    "exec": "restricted"
+  },
+  "users": [
+    {"id": "ivy",  "name": "Ivy (intern)",              "groups": ["all-staff", "eng", "interns"], "manager": "dan"},
+    {"id": "erin", "name": "Erin (engineer)",           "groups": ["all-staff", "eng"],            "manager": "dan"},
+    {"id": "dan",  "name": "Dan (engineering manager)", "groups": ["all-staff", "eng", "managers"], "manager": "cora"},
+    {"id": "hana", "name": "Hana (HR compensation)",    "groups": ["all-staff", "hr", "hr-comp"],  "manager": "cora"},
+    {"id": "cora", "name": "Cora (CEO)",                "groups": ["all-staff", "exec", "managers"], "manager": null}
+  ]
+}

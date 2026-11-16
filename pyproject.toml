@@ -1,0 +1,74 @@
+[project]
+name = "permission-aware-rag"
+version = "0.1.0"
+description = "Reference implementation: enforce document permissions at retrieval time, from verified identity, before anything reaches the LLM."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.12"
+dependencies = [
+    "qdrant-client>=1.12",
+    "fastapi>=0.115",
+    "pydantic>=2.8",
+    "pyjwt>=2.9",
+    "psycopg[binary]>=3.2",
+]
+
+[project.optional-dependencies]
+llm = ["anthropic>=1.0"]
+dev = [
+    "anthropic>=1.0",
+    "httpx>=0.27",
+    "hypothesis>=6.100",
+    "mypy>=1.11",
+    "pytest>=8.3",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+    "uvicorn>=0.30",
+]
+
+[project.scripts]
+pa-rag-demo = "pa_rag.demo:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pa_rag"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF", "PT"]
+ignore = ["S101"]  # assert is fine in tests and for internal invariants that also raise
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S105", "S106"]  # hard-coded test secrets are intentional
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "src"
+packages = ["pa_rag"]
+
+[[tool.mypy.overrides]]
+module = ["qdrant_client.*", "fastembed.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "integration: needs the Postgres from docker-compose (set PA_RAG_DATABASE_URL)",
+]
+
+[tool.coverage.run]
+source = ["pa_rag"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

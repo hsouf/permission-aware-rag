@@ -1,0 +1,15 @@
+{
+  "_comment": "Mirror of the source system's own permissions (think SharePoint / Google Drive sharing settings), exported by a connector. Ingestion copies these onto every chunk; it never invents its own scheme.",
+  "version": 1,
+  "documents": {
+    "employee_handbook.md":          {"allowed": ["group:all-staff"],                        "classification": "internal",     "department": "people"},
+    "eng_onboarding.md":             {"allowed": ["group:eng"],                              "classification": "internal",     "department": "engineering"},
+    "incident_postmortem_2026_q3.md":{"allowed": ["group:eng"],                              "classification": "internal",     "department": "engineering"},
+    "reorg_plan_draft.md":           {"allowed": ["group:managers", "group:hr"],             "classification": "confidential", "department": "people"},
+    "perf_review_erin_2026.md":      {"allowed": ["user:erin", "manager-of:erin", "group:hr"], "classification": "confidential", "department": "hr"},
+    "perf_review_ivy_2026.md":       {"allowed": ["user:ivy", "manager-of:ivy", "group:hr"],   "classification": "confidential", "department": "hr"},
+    "exec_comp_2026.md":             {"allowed": ["group:exec", "group:hr-comp"],            "classification": "restricted",   "department": "hr"},
+    "board_minutes_2026_10.md":      {"allowed": ["group:exec"],                             "classification": "restricted",   "department": "exec"},
+    "payroll_export_2026_10.csv":    {"allowed": ["group:hr-comp"],                          "classification": "restricted",   "department": "hr", "index": false}
+  }
+}
