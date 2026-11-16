@@ -167,6 +167,10 @@ The patterns here are the production patterns. The plumbing around them is simpl
 | `SET LOCAL ROLE` with fixed queries | Same, or per-user login roles if free-form SQL is ever allowed |
 | In-memory cache and memory | Redis/Postgres with the same keys, encryption at rest, retention limits |
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Report access-control bypasses privately, as described in [SECURITY.md](SECURITY.md). Changes are recorded in [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 [MIT](LICENSE). All people, companies and figures in `data/` are fictional.

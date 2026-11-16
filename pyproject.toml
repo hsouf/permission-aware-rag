@@ -4,7 +4,21 @@ version = "0.1.0"
 description = "Reference implementation: enforce document permissions at retrieval time, from verified identity, before anything reaches the LLM."
 readme = "README.md"
 license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "hsouf" }]
 requires-python = ">=3.12"
+keywords = ["rag", "access-control", "authorization", "rebac", "row-level-security", "qdrant", "llm-security"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Security",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+]
 dependencies = [
     "qdrant-client>=1.12",
     "fastapi>=0.115",
@@ -25,6 +39,12 @@ dev = [
     "ruff>=0.6",
     "uvicorn>=0.30",
 ]
+
+[project.urls]
+Homepage = "https://github.com/hsouf/permission-aware-rag"
+Documentation = "https://github.com/hsouf/permission-aware-rag/blob/main/docs/best-practices.md"
+Issues = "https://github.com/hsouf/permission-aware-rag/issues"
+Changelog = "https://github.com/hsouf/permission-aware-rag/blob/main/CHANGELOG.md"
 
 [project.scripts]
 pa-rag-demo = "pa_rag.demo:main"
